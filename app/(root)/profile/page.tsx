@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Profile = () => {
   return (
-    <div className='text-violet-600'>Profile</div>
-  )
-}
+    <div className="">
+      <h1 className="text-20 font-bold text-white-1">Profile</h1>
+    </div>
+  );
+};
 
-export default Profile
+export default Profile;
