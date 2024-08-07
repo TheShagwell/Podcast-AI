@@ -15,7 +15,7 @@ export default function RootLayout({
         <section className="flex min-h-screen flex-1 flex-col sm:px-10">
           <div className="mx-auto flex w-full max-w-5xl flex-col max-sm:px-4">
             <div className="flex h-16 items-center justify-between md:hidden">
-              <Image src="/icons/logo.svg" alt="menu icon" width={30} height={30}/>
+              <Image src="/icons/logo.svg" alt="hamburger menu icon" width={30} height={30}/>
               <MobileNav/>
             </div>
             <div className="flex flex-col md:pb-14">
