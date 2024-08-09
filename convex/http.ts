@@ -16,7 +16,7 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
   }
   switch (event.type) {
     case "user.created":
-      await ctx.runMutation(internal.user.createUser, {
+      await ctx.runMutation(internal.users.createUser, {
         clerkId: event.data.id,
         email: event.data.email_addresses[0].email_address,
         imageUrl: event.data.image_url,
@@ -24,14 +24,14 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
       });
       break;
     case "user.updated":
-      await ctx.runMutation(internal.user.updateUser, {
+      await ctx.runMutation(internal.users.updateUser, {
         clerkId: event.data.id,
         imageUrl: event.data.image_url,
         email: event.data.email_addresses[0].email_address,
       });
       break;
     case "user.deleted":
-      await ctx.runMutation(internal.user.deleteUser, {
+      await ctx.runMutation(internal.users.deleteUser, {
         clerkId: event.data.id as string,
       });
       break;
@@ -52,7 +52,6 @@ http.route({
 const validateRequest = async (
   req: Request
 ): Promise<WebhookEvent | undefined> => {
-  // TODO: Update CLERK_WEBHOOK_SECRET (During production)
   const webhookSecret = process.env.CLERK_WEBHOOK_SECRET!;
   if (!webhookSecret) {
     throw new Error("CLERK_WEBHOOK_SECRET is not defined");
